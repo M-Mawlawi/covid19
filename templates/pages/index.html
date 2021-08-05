@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+</head>
+<body>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+    <table id="myTable">
+    <tr class="header">
+    <th>Name</th>
+    <th>Region</th>
+    <th>Total Cases</th>
+    <th>Cases per 10000 Population</th>
+    <th>Cases Last 7 Days</th>
+    <th>Cases Last 7 Days per 10000 Population</th>
+    <th>Cases Last 24 Hours</th>
+    <th>Total Death</th>
+    <th>Total Death per 10000 Population</th>
+    <th>Death in Last 7 Days</th>
+    <th>Death in Last 7 Days per 10000 Population</th>
+    <th>Death in Last 24 Hours</th>
+    </tr>
+    {% for val in response %}
+    <tr>
+    {%for a in flag%}
+    {% for vkey,vval in val.items %}
+    {%if a.name == val.Name%}
+    {%if vval == none%}
+    {%if val.Name == "Syrian Arab Republic"%}
+    <td><img src="{%static 'img/flag/sy.png'%}" height="50" width="70"></td>
+    {%else%}
+    <td><img src="{{a.flag}}" height="50" width="70"></td>
+    {%endif%}
+    {%else%}
+    <td>{{vval}}</td>
+    {%endif%}
+    {%endif%}
+    {% endfor %}
+    {%endfor%}
+    </tr>
+    {% endfor %}
+    </table>
+    <script>
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+        </script>
+</body>
+</html>
