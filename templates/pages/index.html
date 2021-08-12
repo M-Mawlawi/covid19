@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"href="{% static 'img/favicon.ico' %}">
     <title>Covid-19 Analytics</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static '/css/style.css'%}">
@@ -57,7 +58,7 @@
     <div class="main-mobile" id="main-mobile">
       <input type="text" id="myInputMob" onkeyup="myFunctionMob()" placeholder="Search for names.." title="Type in a name">
       {% for val in response %}
-      <div class="container-mob" id="container-mob">
+      <div class="container-mob">
         {%for a in flag%}
           {% for vkey,vval in val.items %}
               
@@ -125,11 +126,6 @@
     </table>
     </div>
     <script>
-        var childCount = document.getElementById('container-mob').childElementCount;
-        console.log(childCount);
-        if(childCount == 0){
-          $('.container-mob').remove();
-        }
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
         

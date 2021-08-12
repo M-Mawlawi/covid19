@@ -202,8 +202,7 @@
   }
 
   .active {
-    background-color: green;
-    color: white;
+    color: #000000;
   }
   
   .dropdown-container {
