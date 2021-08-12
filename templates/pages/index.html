@@ -58,13 +58,14 @@
     <div class="main-mobile" id="main-mobile">
       <input type="text" id="myInputMob" onkeyup="myFunctionMob()" placeholder="Search for names.." title="Type in a name">
       {% for val in response %}
-      <div class="container-mob">
+      
         {%for a in flag%}
           {% for vkey,vval in val.items %}
               
                 {%if a.name == val.Name%}
                     {%if vval != none%}
                     {%if forloop.first%}
+                    <div class="container-mob" id="{{val.Name}">
                     {%if val.Name == "Syrian Arab Republic"%}
                       <img src="{%static 'img/flag/sy.png'%}" height="50" id="{{a.alpha2Code}}" width="70">
                     {%else%}
@@ -74,16 +75,17 @@
                     </button>
                     <div class="dropdown-container">
                     {%endif%}
-                      <p>{{vval}}</p>
+                    <p><b>{{vkey}}:</b></p><p>{{vval}}</p>
                       {%if forloop.revcounter0 == 1%}
                       </div>
+                    </div>
                       {%endif%}
                       {%endif%}
                 {%endif%}
 
           {%endfor%}  
         {%endfor%}
-      </div>
+      
       {%endfor%}
       
     </div>
@@ -126,6 +128,8 @@
     </table>
     </div>
     <script>
+      
+      
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
         
@@ -393,6 +397,7 @@
               }
             });
           })
+
         </script>
 </body>
 </html>

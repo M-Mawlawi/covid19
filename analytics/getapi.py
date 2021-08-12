@@ -19,7 +19,6 @@ class getdata():
         df.at[34,'Name'] = "Palestine, State of"
 
         js = df.to_json(orient= 'records')
-
         with open(jsondata,'w') as file:
             js = json.loads(js)
             file.write(json.dumps(js,indent=4))
