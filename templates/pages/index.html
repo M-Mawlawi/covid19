@@ -25,15 +25,13 @@
         {%for a in flag%}
           {% for vkey,vval in val.items %}
               
-                {%if a.name == val.Name%}
+                {%if a.Name == val.Name%}
                     {%if vval != none%}
                     {%if forloop.first%}
                     <div class="container-mob" id="{{val.Name}">
-                    {%if val.Name == "Syrian Arab Republic"%}
-                      <img src="{%static 'img/flag/sy.png'%}" height="50" id="{{a.alpha2Code}}" width="70">
-                    {%else%}
-                      <img src="{{a.flag}}" height="50" width="70" id="{{a.alpha2Code}}">
-                    {%endif%}
+                    
+                      <img src="https://www.countryflags.io/{{a.Code}}/flat/64.png" height="64" width="64" id="{{a.Code}}">
+                    
                     <button class="dropdown-btn">{{val.Name}}
                     </button>
                     <div class="dropdown-container">
@@ -73,16 +71,12 @@
     <tr>
     {%for a in flag%}
     {% for vkey,vval in val.items %}
-    {%if a.name == val.Name%}
-    {%if vval == none%}
-    {%if val.Name == "Syrian Arab Republic"%}
-    <td id="{{a.alpha2Code}}"><img src="{%static 'img/flag/sy.png'%}" height="50" width="70"></td>
-    {%else%}
-    <td id="{{a.alpha2Code}}"><img src="{{a.flag}}" height="50" width="70"></td>
-    {%endif%}
-    {%else%}
-    <td>{{vval}}</td>
-    {%endif%}
+    {%if a.Name == val.Name%}
+      {%if vval == none%}
+        <td id="{{a.Code}}"><img src="https://www.countryflags.io/{{a.Code}}/flat/64.png" height="64" width="64"></td>
+      {%else%}
+      <td>{{vval}}</td>
+      {%endif%}
     {%endif%}
     {% endfor %}
     {%endfor%}
@@ -170,8 +164,8 @@
               {%for res in response%}
               {%for code in flag%}
               {% for rkey,rval in res.items %}
-              {%if code.name == res.Name%}
-                {{code.alpha2Code}}:{
+              {%if code.Name == res.Name%}
+                {{code.Code}}:{
                   cases: {{res.Cases_newly_reported_in_last_24_hours}},
                   death: {{res.Deaths_newly_reported_in_last_24_hours}},
                   cases7: {{res.Cases_newly_reported_in_last_7_days}},
